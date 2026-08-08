@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FocusFlow | Advanced Focus Tool</title>
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Chart.js 3 -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
+    <!-- External CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Background Floating Shapes -->
+    <div class="bg-shapes">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+
+    <!-- ===== APP ===== -->
+    <div class="app">
+
+        <!-- Header -->
+        <header class="header">
+            <div class="header-left">
+                <i class="fas fa-brain logo"></i>
+                <h1>FocusFlow <small>Smart Focus</small></h1>
+            </div>
+            <div class="header-actions">
+                <button id="darkModeToggle" title="Toggle dark/light mode">
+                    <i class="fas fa-moon"></i> <span>Dark</span>
+                </button>
+                <button id="resetDataBtn" title="Reset all data">
+                    <i class="fas fa-undo-alt"></i> <span>Reset</span>
+                </button>
+            </div>
+        </header>
+
+        <!-- Main Grid -->
+        <div class="main-grid">
+
+            <!-- Timer Card -->
+            <section class="card">
+                <div class="card-header">
+                    <h2><i class="fas fa-clock"></i> Timer</h2>
+                    <span class="badge" id="timerModeBadge">Focus</span>
+                </div>
+                <div class="timer-display">
+                    <div class="time" id="timerDisplay">25:00</div>
+                    <div class="mode-label" id="timerStatusLabel">● Paused</div>
+                </div>
+                <div class="timer-controls">
+                    <button id="timerStartBtn" class="primary"><i class="fas fa-play"></i> Start</button>
+                    <button id="timerPauseBtn"><i class="fas fa-pause"></i> Pause</button>
+                    <button id="timerResetBtn"><i class="fas fa-stop"></i> Reset</button>
+                </div>
+                <div class="timer-settings">
+                    <label>Focus <input type="number" id="workDuration" value="25" min="1" max="90"> min</label>
+                    <label>Break <input type="number" id="breakDuration" value="5" min="1" max="30"> min</label>
+                </div>
+            </section>
+
+            <!-- Tasks Card -->
+            <section class="card">
+                <div class="card-header">
+                    <h2><i class="fas fa-tasks"></i> Tasks</h2>
+                    <span class="badge" id="taskCountBadge">0</span>
+                </div>
+                <div class="task-input-group">
+                    <input type="text" id="taskInput" placeholder="New task ..." maxlength="80">
+                    <button id="addTaskBtn"><i class="fas fa-plus"></i> Add</button>
+                </div>
+                <ul class="task-list" id="taskList"></ul>
+                <div class="task-stats" id="taskStats">0 done out of 0</div>
+            </section>
+
+            <!-- Notes Card -->
+            <section class="card">
+                <div class="card-header">
+                    <h2><i class="fas fa-pen-fancy"></i> Notes</h2>
+                    <span class="badge" id="noteStatus">Saved</span>
+                </div>
+                <div class="notes-area">
+                    <textarea id="notesArea" placeholder="Write your notes here ..."></textarea>
+                </div>
+            </section>
+
+            <!-- Stats + Chart Card -->
+            <section class="card">
+                <div class="card-header">
+                    <h2><i class="fas fa-chart-pie"></i> Statistics</h2>
+                    <span class="badge">Daily Report</span>
+                </div>
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <div class="number" id="statPomodoros">0</div>
+                        <div class="label">Pomodoros Today</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="number" id="statTasksDone">0</div>
+                        <div class="label">Tasks Done</div>
+                    </div>
+                </div>
+                <div class="chart-wrapper">
+                    <canvas id="statsChart"></canvas>
+                </div>
+            </section>
+
+            <!-- Ambient Sounds Card -->
+            <section class="card" style="grid-column: span 1;">
+                <div class="card-header">
+                    <h2><i class="fas fa-headphones"></i> Ambient Sounds</h2>
+                    <span class="badge" id="ambientStatus">Off</span>
+                </div>
+                <div class="ambient-grid">
+                    <button class="ambient-btn" data-sound="off"><i class="fas fa-volume-mute"></i> Off</button>
+                    <button class="ambient-btn" data-sound="rain"><i class="fas fa-cloud-rain"></i> Rain</button>
+                    <button class="ambient-btn" data-sound="waves"><i class="fas fa-water"></i> Waves</button>
+                    <button class="ambient-btn" data-sound="forest"><i class="fas fa-tree"></i> Forest</button>
+                </div>
+            </section>
+
+        </div><!-- /main-grid -->
+    </div><!-- /app -->
+
+    <!-- External JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>
